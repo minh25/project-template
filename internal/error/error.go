@@ -1,5 +1,8 @@
 package error
 
-import "google.golang.org/grpc/codes"
+import (
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
 
-const ErrCodeOK = codes.OK
+var ErrInvalid = status.Error(codes.InvalidArgument, "invalid")
