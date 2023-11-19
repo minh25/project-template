@@ -1,11 +1,14 @@
 package server
 
-import "removebyyourname/pb"
+import (
+	"database/sql"
+	"removebyyourname/pb"
+)
 
 type server struct {
 	pb.UnimplementedServiceServer
 }
 
-func New() *server {
+func New(_ *sql.DB) *server {
 	return &server{}
 }

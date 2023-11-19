@@ -1,16 +1,23 @@
 package config
 
-import "strconv"
+import (
+	"fmt"
+)
 
-type Listen struct {
+type ServerListen struct {
+	Host string `mapstructure:"host"`
 	Port uint16 `mapstructure:"port"`
 }
 
-func (l *Listen) String() string {
-	return strconv.FormatUint(uint64(l.Port), 10)
+func (s *ServerListen) ListenString() string {
+	return fmt.Sprintf(":%d", s.Port)
+}
+
+func (s *ServerListen) String() string {
+	return fmt.Sprintf("%s:%d", s.Host, s.Port)
 }
 
 type ServerConfig struct {
-	Http Listen `mapstructure:"http"`
-	Grpc Listen `mapstructure:"grpc"`
+	HTTP ServerListen `mapstructure:"http"`
+	GRPC ServerListen `mapstructure:"grpc"`
 }

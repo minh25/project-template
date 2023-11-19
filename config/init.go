@@ -37,6 +37,7 @@ func loadConfigWithViper(vip *viper.Viper) Config {
 	for _, key := range vip.AllKeys() {
 		val := vip.Get(key)
 		vip.Set(key, val)
+		fmt.Println(key, val)
 	}
 
 	fmt.Println("Config file used:", vip.ConfigFileUsed())
